@@ -76,13 +76,13 @@ export default function Home() {
   const lossB = estimatedValueBStop - costBasis;
 
   const formatPrice = (value: number) => {
-    return value.toFixed(2);
+    return value.toFixed(3);
   };
 
   const formatCurrency = (value: number) => {
     return value.toLocaleString(undefined, {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
+      minimumFractionDigits: 3,
+      maximumFractionDigits: 3,
     });
   };
 
