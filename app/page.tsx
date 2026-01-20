@@ -111,140 +111,159 @@ export default function Home() {
       <div className="max-w-4xl mx-auto grid grid-cols-2 gap-4">
         {/* Left Screen - 0.8% / 2% */}
         <div className="bg-white rounded-lg shadow overflow-hidden">
-          {/* Header */}
-          <div className="bg-green-600 text-white px-4 py-3">
-            <div className="text-sm font-medium">{currentStock.name}</div>
-          </div>
-
-          {/* Price Info */}
-          <div className="px-4 py-3 border-b">
+          {/* Header - Dark purple/black like screenshot */}
+          <div className="bg-[#1e1a2e] text-white px-4 py-3">
+            <div className="text-sm font-medium mb-2">{currentStock.name}</div>
             <div className="flex items-baseline gap-2">
-              <span className="text-2xl font-bold">${formatPrice(numPrice)}</span>
-              <span className="text-xs text-gray-600">ARCX</span>
-              <span className="text-green-600 text-sm font-medium">+$2.67 (4.60%)</span>
+              <span className="text-3xl font-bold">${formatPrice(numPrice)}</span>
+              <span className="text-xs text-gray-400">ARCX</span>
+              <span className="text-green-400 text-sm font-medium">+$2.67 (4.60%)</span>
+              <span className="ml-auto text-gray-400">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
+                </svg>
+              </span>
             </div>
           </div>
 
           {/* Bid/Ask/Volume */}
-          <div className="grid grid-cols-3 px-4 py-2 border-b text-xs">
+          <div className="grid grid-cols-3 px-4 py-3 border-b text-xs">
             <div>
-              <div className="text-gray-700 uppercase font-semibold">Bid <span className="text-gray-600">ARCX</span></div>
-              <div className="font-medium">{currentStock.bid}</div>
+              <div className="text-gray-500 uppercase text-[10px] font-medium">Bid <span className="text-gray-400">ARCX</span></div>
+              <div className="font-medium text-gray-900">{currentStock.bid}</div>
             </div>
             <div>
-              <div className="text-gray-700 uppercase font-semibold">Ask <span className="text-gray-600">ARCX</span></div>
-              <div className="font-medium">{currentStock.ask}</div>
+              <div className="text-gray-500 uppercase text-[10px] font-medium">Ask <span className="text-gray-400">ARCX</span></div>
+              <div className="font-medium text-gray-900">{currentStock.ask}</div>
             </div>
             <div>
-              <div className="text-gray-700 uppercase font-semibold">Volume</div>
-              <div className="font-medium">{currentStock.volume}</div>
+              <div className="text-gray-500 uppercase text-[10px] font-medium">Volume</div>
+              <div className="font-medium text-gray-900">{currentStock.volume}</div>
             </div>
           </div>
 
-          {/* Order Type */}
-          <div className="grid grid-cols-2 px-4 py-2 border-b text-xs">
+          {/* Order Type Dropdowns */}
+          <div className="grid grid-cols-2 gap-3 px-4 py-3 border-b">
             <div>
-              <div className="text-gray-700 uppercase font-semibold">Type</div>
-              <div className="font-medium">Conditional</div>
+              <label className="text-gray-500 uppercase text-[10px] font-medium block mb-1">Order Type</label>
+              <select className="w-full p-2 border border-gray-300 rounded text-sm bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500">
+                <option>Conditional</option>
+                <option>Market</option>
+                <option>Limit</option>
+              </select>
             </div>
             <div>
-              <div className="text-gray-700 uppercase font-semibold">Conditional Type</div>
-              <div className="px-2 py-0.5 bg-gray-100 rounded text-center font-medium inline-block">OCO</div>
+              <label className="text-gray-500 uppercase text-[10px] font-medium block mb-1">Conditional Type</label>
+              <select className="w-full p-2 border border-gray-300 rounded text-sm bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500">
+                <option>OCO</option>
+                <option>OTO</option>
+              </select>
             </div>
           </div>
 
           {/* Order A and B Headers */}
           <div className="grid grid-cols-2 border-b">
-            <div className="px-4 py-2 border-r">
-              <div className="font-bold text-sm">Order A</div>
-              <div className="text-xs text-gray-600">If Order A executes then Order B will be cancelled</div>
+            <div className="px-4 py-3 border-r">
+              <div className="font-bold text-sm text-gray-900">Order A</div>
+              <div className="text-xs text-gray-500 mt-1">If Order A executes then Order B will be cancelled</div>
             </div>
-            <div className="px-4 py-2">
-              <div className="font-bold text-sm">Order B</div>
-              <div className="text-xs text-gray-600">If Order B executes then Order A will be cancelled</div>
+            <div className="px-4 py-3">
+              <div className="font-bold text-sm text-gray-900">Order B</div>
+              <div className="text-xs text-gray-500 mt-1">If Order B executes then Order A will be cancelled</div>
             </div>
           </div>
 
-          {/* Order Details */}
+          {/* Order Details with form fields */}
           <div className="grid grid-cols-2 border-b">
-            <div className="px-4 py-2 border-r space-y-3">
+            <div className="px-4 py-3 border-r space-y-3">
               <div>
-                <div className="text-xs text-gray-700 uppercase font-semibold">Action</div>
-                <div className="font-medium">Sell</div>
+                <label className="text-gray-500 uppercase text-[10px] font-medium block mb-1">Action</label>
+                <select className="w-full p-2 border border-gray-300 rounded text-sm bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500">
+                  <option>Sell</option>
+                  <option>Buy</option>
+                </select>
               </div>
               <div>
-                <div className="text-xs text-gray-700 uppercase font-semibold">Quantity</div>
-                <div className="font-medium">{numShares}</div>
+                <label className="text-gray-500 uppercase text-[10px] font-medium block mb-1">Quantity</label>
+                <input type="text" value={numShares} readOnly className="w-full p-2 border border-gray-300 rounded text-sm bg-gray-50 text-gray-900" />
               </div>
               <div>
-                <div className="text-xs text-gray-700 uppercase font-semibold">Order Type</div>
-                <div className="font-medium">Limit</div>
+                <label className="text-gray-500 uppercase text-[10px] font-medium block mb-1">Order Type</label>
+                <select className="w-full p-2 border border-gray-300 rounded text-sm bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500">
+                  <option>Limit</option>
+                  <option>Market</option>
+                </select>
               </div>
               <div>
-                <div className="text-xs text-gray-700 uppercase font-semibold">Limit Price</div>
-                <div className="font-medium text-green-600">${formatPrice(limitPriceA)}</div>
-                <div className="text-xs text-gray-600">+0.8% from buy</div>
+                <label className="text-gray-500 uppercase text-[10px] font-medium block mb-1">Limit Price</label>
+                <input type="text" value={`$${formatPrice(limitPriceA)}`} readOnly className="w-full p-2 border border-gray-300 rounded text-sm bg-gray-50 text-gray-900" />
+                <div className="text-xs text-gray-500 mt-1">+0.8% from buy</div>
               </div>
               <div>
-                <div className="text-xs text-gray-700 uppercase font-semibold">Time in Force</div>
-                <div className="font-medium">GTC</div>
+                <label className="text-gray-500 uppercase text-[10px] font-medium block mb-1">Time in Force</label>
+                <select className="w-full p-2 border border-gray-300 rounded text-sm bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500">
+                  <option>GTC</option>
+                  <option>Day</option>
+                </select>
               </div>
             </div>
-            <div className="px-4 py-2 space-y-3">
+            <div className="px-4 py-3 space-y-3">
               <div>
-                <div className="text-xs text-gray-700 uppercase font-semibold">Action</div>
-                <div className="font-medium">Sell</div>
+                <label className="text-gray-500 uppercase text-[10px] font-medium block mb-1">Action</label>
+                <select className="w-full p-2 border border-gray-300 rounded text-sm bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500">
+                  <option>Sell</option>
+                  <option>Buy</option>
+                </select>
               </div>
               <div>
-                <div className="text-xs text-gray-700 uppercase font-semibold">Quantity</div>
-                <div className="font-medium">{numShares}</div>
+                <label className="text-gray-500 uppercase text-[10px] font-medium block mb-1">Quantity</label>
+                <input type="text" value={numShares} readOnly className="w-full p-2 border border-gray-300 rounded text-sm bg-gray-50 text-gray-900" />
               </div>
               <div>
-                <div className="text-xs text-gray-700 uppercase font-semibold">Order Type</div>
-                <div className="font-medium">Stop Loss</div>
+                <label className="text-gray-500 uppercase text-[10px] font-medium block mb-1">Order Type</label>
+                <select className="w-full p-2 border border-gray-300 rounded text-sm bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500">
+                  <option>Stop Loss</option>
+                  <option>Stop Limit</option>
+                </select>
               </div>
               <div>
-                <div className="text-xs text-gray-700 uppercase font-semibold">Stop Price</div>
-                <div className="font-medium text-red-600">${formatPrice(stopPriceA)}</div>
-                <div className="text-xs text-gray-600">-2% from buy</div>
+                <label className="text-gray-500 uppercase text-[10px] font-medium block mb-1">Stop Price</label>
+                <input type="text" value={`$${formatPrice(stopPriceA)}`} readOnly className="w-full p-2 border border-gray-300 rounded text-sm bg-gray-50 text-gray-900" />
+                <div className="text-xs text-gray-500 mt-1">-2% from buy</div>
               </div>
               <div>
-                <div className="text-xs text-gray-700 uppercase font-semibold">Time in Force</div>
-                <div className="font-medium">GTC</div>
+                <label className="text-gray-500 uppercase text-[10px] font-medium block mb-1">Time in Force</label>
+                <select className="w-full p-2 border border-gray-300 rounded text-sm bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500">
+                  <option>GTC</option>
+                  <option>Day</option>
+                </select>
               </div>
             </div>
           </div>
 
-          {/* Cost Basis & Estimated Values */}
-          <div className="px-4 py-3 space-y-2 border-b bg-gray-50">
-            <div className="flex justify-between">
-              <span className="text-gray-800 font-semibold">Cost Basis:</span>
+          {/* Cost Basis & Potential Gain/Loss */}
+          <div className="px-4 py-3 space-y-2 border-t">
+            <div className="flex justify-between items-center">
+              <span className="text-gray-700 text-sm">Cost Basis:</span>
               <span className="font-semibold text-gray-900">${formatCurrency(costBasis)}</span>
             </div>
-          </div>
-          <div className="px-4 py-3 space-y-2 border-b">
-            <div className="flex justify-between">
-              <span className="text-gray-800">Estimated value (A):</span>
-              <span className="font-semibold text-green-600">${formatCurrency(estimatedValueA)}</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-gray-800">Potential Profit (A):</span>
+            <div className="flex justify-between items-center">
+              <span className="text-gray-700 text-sm">Potential Gain (A):</span>
               <span className="font-semibold text-green-600">+${formatCurrency(profitA)}</span>
             </div>
-            <hr className="my-2 border-gray-200" />
-            <div className="flex justify-between">
-              <span className="text-gray-800">Estimated value (B):</span>
-              <span className="font-semibold text-red-600">${formatCurrency(estimatedValueAStop)}</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-gray-800">Potential Loss (B):</span>
+            <div className="flex justify-between items-center">
+              <span className="text-gray-700 text-sm">Potential Loss (B):</span>
               <span className="font-semibold text-red-600">-${formatCurrency(Math.abs(lossA))}</span>
             </div>
           </div>
 
           {/* Preview Button */}
-          <div className="p-4">
-            <button className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 rounded-lg transition">
+          <div className="p-4 pt-2">
+            <button className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 rounded-lg transition flex items-center justify-center gap-2">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+              </svg>
               Preview order
             </button>
           </div>
@@ -252,140 +271,159 @@ export default function Home() {
 
         {/* Right Screen - 1% / 2% */}
         <div className="bg-white rounded-lg shadow overflow-hidden">
-          {/* Header */}
-          <div className="bg-green-600 text-white px-4 py-3">
-            <div className="text-sm font-medium">{currentStock.name}</div>
-          </div>
-
-          {/* Price Info */}
-          <div className="px-4 py-3 border-b">
+          {/* Header - Dark purple/black like screenshot */}
+          <div className="bg-[#1e1a2e] text-white px-4 py-3">
+            <div className="text-sm font-medium mb-2">{currentStock.name}</div>
             <div className="flex items-baseline gap-2">
-              <span className="text-2xl font-bold">${formatPrice(numPrice)}</span>
-              <span className="text-xs text-gray-600">ARCX</span>
-              <span className="text-green-600 text-sm font-medium">+$2.67 (4.60%)</span>
+              <span className="text-3xl font-bold">${formatPrice(numPrice)}</span>
+              <span className="text-xs text-gray-400">ARCX</span>
+              <span className="text-green-400 text-sm font-medium">+$2.67 (4.60%)</span>
+              <span className="ml-auto text-gray-400">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
+                </svg>
+              </span>
             </div>
           </div>
 
           {/* Bid/Ask/Volume */}
-          <div className="grid grid-cols-3 px-4 py-2 border-b text-xs">
+          <div className="grid grid-cols-3 px-4 py-3 border-b text-xs">
             <div>
-              <div className="text-gray-700 uppercase font-semibold">Bid <span className="text-gray-600">ARCX</span></div>
-              <div className="font-medium">{currentStock.bid}</div>
+              <div className="text-gray-500 uppercase text-[10px] font-medium">Bid <span className="text-gray-400">ARCX</span></div>
+              <div className="font-medium text-gray-900">{currentStock.bid}</div>
             </div>
             <div>
-              <div className="text-gray-700 uppercase font-semibold">Ask <span className="text-gray-600">ARCX</span></div>
-              <div className="font-medium">{currentStock.ask}</div>
+              <div className="text-gray-500 uppercase text-[10px] font-medium">Ask <span className="text-gray-400">ARCX</span></div>
+              <div className="font-medium text-gray-900">{currentStock.ask}</div>
             </div>
             <div>
-              <div className="text-gray-700 uppercase font-semibold">Volume</div>
-              <div className="font-medium">{currentStock.volume}</div>
+              <div className="text-gray-500 uppercase text-[10px] font-medium">Volume</div>
+              <div className="font-medium text-gray-900">{currentStock.volume}</div>
             </div>
           </div>
 
-          {/* Order Type */}
-          <div className="grid grid-cols-2 px-4 py-2 border-b text-xs">
+          {/* Order Type Dropdowns */}
+          <div className="grid grid-cols-2 gap-3 px-4 py-3 border-b">
             <div>
-              <div className="text-gray-700 uppercase font-semibold">Type</div>
-              <div className="font-medium">Conditional</div>
+              <label className="text-gray-500 uppercase text-[10px] font-medium block mb-1">Order Type</label>
+              <select className="w-full p-2 border border-gray-300 rounded text-sm bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500">
+                <option>Conditional</option>
+                <option>Market</option>
+                <option>Limit</option>
+              </select>
             </div>
             <div>
-              <div className="text-gray-700 uppercase font-semibold">Conditional Type</div>
-              <div className="px-2 py-0.5 bg-gray-100 rounded text-center font-medium inline-block">OCO</div>
+              <label className="text-gray-500 uppercase text-[10px] font-medium block mb-1">Conditional Type</label>
+              <select className="w-full p-2 border border-gray-300 rounded text-sm bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500">
+                <option>OCO</option>
+                <option>OTO</option>
+              </select>
             </div>
           </div>
 
           {/* Order A and B Headers */}
           <div className="grid grid-cols-2 border-b">
-            <div className="px-4 py-2 border-r">
-              <div className="font-bold text-sm">Order A</div>
-              <div className="text-xs text-gray-600">If Order A executes then Order B will be cancelled</div>
+            <div className="px-4 py-3 border-r">
+              <div className="font-bold text-sm text-gray-900">Order A</div>
+              <div className="text-xs text-gray-500 mt-1">If Order A executes then Order B will be cancelled</div>
             </div>
-            <div className="px-4 py-2">
-              <div className="font-bold text-sm">Order B</div>
-              <div className="text-xs text-gray-600">If Order B executes then Order A will be cancelled</div>
+            <div className="px-4 py-3">
+              <div className="font-bold text-sm text-gray-900">Order B</div>
+              <div className="text-xs text-gray-500 mt-1">If Order B executes then Order A will be cancelled</div>
             </div>
           </div>
 
-          {/* Order Details */}
+          {/* Order Details with form fields */}
           <div className="grid grid-cols-2 border-b">
-            <div className="px-4 py-2 border-r space-y-3">
+            <div className="px-4 py-3 border-r space-y-3">
               <div>
-                <div className="text-xs text-gray-700 uppercase font-semibold">Action</div>
-                <div className="font-medium">Sell</div>
+                <label className="text-gray-500 uppercase text-[10px] font-medium block mb-1">Action</label>
+                <select className="w-full p-2 border border-gray-300 rounded text-sm bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500">
+                  <option>Sell</option>
+                  <option>Buy</option>
+                </select>
               </div>
               <div>
-                <div className="text-xs text-gray-700 uppercase font-semibold">Quantity</div>
-                <div className="font-medium">{numShares}</div>
+                <label className="text-gray-500 uppercase text-[10px] font-medium block mb-1">Quantity</label>
+                <input type="text" value={numShares} readOnly className="w-full p-2 border border-gray-300 rounded text-sm bg-gray-50 text-gray-900" />
               </div>
               <div>
-                <div className="text-xs text-gray-700 uppercase font-semibold">Order Type</div>
-                <div className="font-medium">Limit</div>
+                <label className="text-gray-500 uppercase text-[10px] font-medium block mb-1">Order Type</label>
+                <select className="w-full p-2 border border-gray-300 rounded text-sm bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500">
+                  <option>Limit</option>
+                  <option>Market</option>
+                </select>
               </div>
               <div>
-                <div className="text-xs text-gray-700 uppercase font-semibold">Limit Price</div>
-                <div className="font-medium text-green-600">${formatPrice(limitPriceB)}</div>
-                <div className="text-xs text-gray-600">+1% from buy</div>
+                <label className="text-gray-500 uppercase text-[10px] font-medium block mb-1">Limit Price</label>
+                <input type="text" value={`$${formatPrice(limitPriceB)}`} readOnly className="w-full p-2 border border-gray-300 rounded text-sm bg-gray-50 text-gray-900" />
+                <div className="text-xs text-gray-500 mt-1">+1% from buy</div>
               </div>
               <div>
-                <div className="text-xs text-gray-700 uppercase font-semibold">Time in Force</div>
-                <div className="font-medium">GTC</div>
+                <label className="text-gray-500 uppercase text-[10px] font-medium block mb-1">Time in Force</label>
+                <select className="w-full p-2 border border-gray-300 rounded text-sm bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500">
+                  <option>GTC</option>
+                  <option>Day</option>
+                </select>
               </div>
             </div>
-            <div className="px-4 py-2 space-y-3">
+            <div className="px-4 py-3 space-y-3">
               <div>
-                <div className="text-xs text-gray-700 uppercase font-semibold">Action</div>
-                <div className="font-medium">Sell</div>
+                <label className="text-gray-500 uppercase text-[10px] font-medium block mb-1">Action</label>
+                <select className="w-full p-2 border border-gray-300 rounded text-sm bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500">
+                  <option>Sell</option>
+                  <option>Buy</option>
+                </select>
               </div>
               <div>
-                <div className="text-xs text-gray-700 uppercase font-semibold">Quantity</div>
-                <div className="font-medium">{numShares}</div>
+                <label className="text-gray-500 uppercase text-[10px] font-medium block mb-1">Quantity</label>
+                <input type="text" value={numShares} readOnly className="w-full p-2 border border-gray-300 rounded text-sm bg-gray-50 text-gray-900" />
               </div>
               <div>
-                <div className="text-xs text-gray-700 uppercase font-semibold">Order Type</div>
-                <div className="font-medium">Stop Loss</div>
+                <label className="text-gray-500 uppercase text-[10px] font-medium block mb-1">Order Type</label>
+                <select className="w-full p-2 border border-gray-300 rounded text-sm bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500">
+                  <option>Stop Loss</option>
+                  <option>Stop Limit</option>
+                </select>
               </div>
               <div>
-                <div className="text-xs text-gray-700 uppercase font-semibold">Stop Price</div>
-                <div className="font-medium text-red-600">${formatPrice(stopPriceB)}</div>
-                <div className="text-xs text-gray-600">-2% from buy</div>
+                <label className="text-gray-500 uppercase text-[10px] font-medium block mb-1">Stop Price</label>
+                <input type="text" value={`$${formatPrice(stopPriceB)}`} readOnly className="w-full p-2 border border-gray-300 rounded text-sm bg-gray-50 text-gray-900" />
+                <div className="text-xs text-gray-500 mt-1">-2% from buy</div>
               </div>
               <div>
-                <div className="text-xs text-gray-700 uppercase font-semibold">Time in Force</div>
-                <div className="font-medium">GTC</div>
+                <label className="text-gray-500 uppercase text-[10px] font-medium block mb-1">Time in Force</label>
+                <select className="w-full p-2 border border-gray-300 rounded text-sm bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500">
+                  <option>GTC</option>
+                  <option>Day</option>
+                </select>
               </div>
             </div>
           </div>
 
-          {/* Cost Basis & Estimated Values */}
-          <div className="px-4 py-3 space-y-2 border-b bg-gray-50">
-            <div className="flex justify-between">
-              <span className="text-gray-800 font-semibold">Cost Basis:</span>
+          {/* Cost Basis & Potential Gain/Loss */}
+          <div className="px-4 py-3 space-y-2 border-t">
+            <div className="flex justify-between items-center">
+              <span className="text-gray-700 text-sm">Cost Basis:</span>
               <span className="font-semibold text-gray-900">${formatCurrency(costBasis)}</span>
             </div>
-          </div>
-          <div className="px-4 py-3 space-y-2 border-b">
-            <div className="flex justify-between">
-              <span className="text-gray-800">Estimated value (A):</span>
-              <span className="font-semibold text-green-600">${formatCurrency(estimatedValueB)}</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-gray-800">Potential Profit (A):</span>
+            <div className="flex justify-between items-center">
+              <span className="text-gray-700 text-sm">Potential Gain (A):</span>
               <span className="font-semibold text-green-600">+${formatCurrency(profitB)}</span>
             </div>
-            <hr className="my-2 border-gray-200" />
-            <div className="flex justify-between">
-              <span className="text-gray-800">Estimated value (B):</span>
-              <span className="font-semibold text-red-600">${formatCurrency(estimatedValueBStop)}</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-gray-800">Potential Loss (B):</span>
+            <div className="flex justify-between items-center">
+              <span className="text-gray-700 text-sm">Potential Loss (B):</span>
               <span className="font-semibold text-red-600">-${formatCurrency(Math.abs(lossB))}</span>
             </div>
           </div>
 
           {/* Preview Button */}
-          <div className="p-4">
-            <button className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 rounded-lg transition">
+          <div className="p-4 pt-2">
+            <button className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 rounded-lg transition flex items-center justify-center gap-2">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+              </svg>
               Preview order
             </button>
           </div>
