@@ -25,6 +25,24 @@ export default function Home() {
       bid: "185.85 x 600",
       ask: "185.92 x 500",
       volume: "52,400,000"
+    },
+    "SOXS": {
+      name: "Direxion Daily Semiconductor Bear 3X Shares",
+      bid: "185.85 x 600",
+      ask: "185.92 x 500",
+      volume: "52,400,000"
+    },
+    "NVDA": {
+      name: "Nvidia",
+      bid: "185.85 x 600",
+      ask: "185.92 x 500",
+      volume: "52,400,000"
+    },
+    "NVDL": {
+      name: "GraniteShares 2x Long NVDA Daily ETF",
+      bid: "185.85 x 600",
+      ask: "185.92 x 500",
+      volume: "52,400,000"
     }
   };
 
